@@ -1,0 +1,33 @@
+2026-02-26 00:38:34,462 INFO ipython === bench console session ===
+2026-02-26 00:38:34,462 INFO ipython import frappe
+2026-02-26 00:38:34,462 INFO ipython print("=" * 60)
+2026-02-26 00:38:34,462 INFO ipython print("📊 DEMO DATA VERIFICATION")
+2026-02-26 00:38:34,462 INFO ipython print("=" * 60)
+2026-02-26 00:38:34,462 INFO ipython # Loan Categories
+2026-02-26 00:38:34,462 INFO ipython cats = frappe.get_all("Loan Category", fields=["name", "loan_category_name"])
+2026-02-26 00:38:34,462 INFO ipython print(f"\n📁 Loan Categories ({len(cats)}):")
+2026-02-26 00:38:34,462 INFO ipython for c in cats:
+    print(f"   {c.name} — {c.loan_category_name}")
+2026-02-26 00:38:34,462 INFO ipython # Loan Products
+2026-02-26 00:38:34,462 INFO ipython prods = frappe.get_all("Loan Product", fields=["name", "product_name", "rate_of_interest", "is_term_loan"], order_by="name")
+2026-02-26 00:38:34,462 INFO ipython print(f"\n📦 Loan Products ({len(prods)}):")
+2026-02-26 00:38:34,462 INFO ipython for p in prods:
+    print(f"   {p.name} — {p.product_name} (Rate: {p.rate_of_interest}%, Term: {'Yes' if p.is_term_loan else 'No'})")
+2026-02-26 00:38:34,462 INFO ipython # Loan Applications
+2026-02-26 00:38:34,462 INFO ipython apps = frappe.get_all("Loan Application", fields=["name", "applicant", "loan_product", "loan_amount", "status"], order_by="posting_date")
+2026-02-26 00:38:34,462 INFO ipython print(f"\n📋 Loan Applications ({len(apps)}):")
+2026-02-26 00:38:34,462 INFO ipython for a in apps:
+    print(f"   {a.name} — {a.applicant} | {a.loan_product} | ₹{a.loan_amount:,.0f} | Status: {a.status}")
+2026-02-26 00:38:34,462 INFO ipython # Securities & Prices
+2026-02-26 00:38:34,462 INFO ipython secs = frappe.db.count("Loan Security")
+2026-02-26 00:38:34,462 INFO ipython prices = frappe.db.count("Loan Security Price")
+2026-02-26 00:38:34,462 INFO ipython doc_types = frappe.db.count("Loan Document Type")
+2026-02-26 00:38:34,462 INFO ipython classifications = frappe.db.count("Loan Classification")
+2026-02-26 00:38:34,462 INFO ipython custs = frappe.db.count("Customer")
+2026-02-26 00:38:34,462 INFO ipython print(f"\n🏦 Loan Securities: {secs}")
+2026-02-26 00:38:34,462 INFO ipython print(f"💰 Security Prices: {prices}")
+2026-02-26 00:38:34,462 INFO ipython print(f"📄 Document Types: {doc_types}")  
+2026-02-26 00:38:34,462 INFO ipython print(f"🏷️  Classifications: {classifications}")
+2026-02-26 00:38:34,462 INFO ipython print(f"👥 Customers: {custs}")
+2026-02-26 00:38:34,462 INFO ipython print("=" * 60)
+2026-02-26 00:38:34,462 INFO ipython === session end ===
